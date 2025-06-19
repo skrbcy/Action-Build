@@ -6,7 +6,7 @@ on:
         type: choice
         description: "配置文件"
         required: true
-        default: oneplus_ace2pro_v
+        default: realme_gt7_pro
         options:
           - oneplus_nord_ce4_v
           - oneplus_ace_3v_v
@@ -32,11 +32,12 @@ on:
           - oneplus_13s
           - oneplus_pad_2_pro
           - oneplus_pad_3
+          - realme_gt7_pro
       BUILD_METHOD:
         type: choice
         description: "编译方式"
         required: true
-        default: gki
+        default: perf
         options:
           - gki
           - perf
@@ -167,7 +168,7 @@ jobs:
       - name: Initialize repo and sync
         run: |
           mkdir kernel_workspace && cd kernel_workspace
-          repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b refs/heads/oneplus/${{ needs.get-config.outputs.CPU }} -m ${{ github.event.inputs.FEIL }}.xml --depth=1
+          repo init -u https://github.com/LuminousMind-Hub/kernel_manifest.git -b oneplus/sm8750 -m gt7pro.xml --depth=1
           repo sync -c -j$(nproc --all) --no-tags --no-clone-bundle --force-sync
           if [  -e kernel_platform/common/BUILD.bazel ]; then
           sed -i '/^[[:space:]]*"protected_exports_list"[[:space:]]*:[[:space:]]*"android\/abi_gki_protected_exports_aarch64",$/d' kernel_platform/common/BUILD.bazel
