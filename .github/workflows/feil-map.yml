@@ -222,7 +222,7 @@ jobs:
               ANDROID_VERSION="android15"
               KERNEL_VERSION="6.6"
               ;;
-            realms_gt7_pro)
+            realme_gt7_pro)
               CPU="sm8750"
               CPUD="sun"
               ANDROID_VERSION="android15"
