@@ -38,7 +38,7 @@ on:
         type: choice
         description: "编译方式"
         required: true
-        default: gki
+        default: perf
         options:
           - gki
           - perf
@@ -55,7 +55,7 @@ on:
         type: string
         description: "自定义内核后缀 (留空则使用随机字符串)"
         required: false
-        default: ""
+        default: "skrbcy"
       BUILD_TIME:
         type: string
         description: "自定义构建时间 (留空则使用当前时间)"
