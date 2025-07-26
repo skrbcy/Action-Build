@@ -131,6 +131,7 @@ jobs:
             ["oneplus_13s"]="sm8750 sun android15 6.6"
             ["oneplus_pad_2_pro"]="sm8750 sun android15 6.6"
             ["oneplus_pad_3"]="sm8750 sun android15 6.6"
+            ["realme_gt7_pro"]="sm8750 sun android15 6.6"
           )
 
           get_combination() {
@@ -294,7 +295,7 @@ jobs:
       - name: Initialize Repo and Sync
         run: |
           mkdir kernel_workspace && cd kernel_workspace
-          repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b refs/heads/oneplus/${{ env.CPU }} -m ${{ github.event.inputs.FILE }}.xml --depth=1
+          repo init -u https://github.com/LuminousMind-Hub/kernel_manifest.git -b oneplus/sm8750 -m gt7pro.xml --depth=1
           repo sync -c -j$(nproc --all) --no-tags --no-clone-bundle --force-sync
           if [ -e kernel_platform/common/BUILD.bazel ]; then
             sed -i '/^[[:space:]]*"protected_exports_list"[[:space:]]*:[[:space:]]*"android\/abi_gki_protected_exports_aarch64",$/d' kernel_platform/common/BUILD.bazel
