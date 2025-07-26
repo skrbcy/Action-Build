@@ -34,7 +34,7 @@ on:
           - oneplus_13s
           - oneplus_pad_2_pro
           - oneplus_pad_3
-          - realmep_gt7_pro
+          - realme_gt7_pro
       SUSFS_CI:
         type: choice
         description: "下载SUSFS模块调用方式"
