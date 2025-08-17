@@ -68,7 +68,7 @@ jobs:
               "oneplus_13s"
               "oneplus_pad_2_pro"
               "oneplus_pad_3"
-              "realme_gt7_pro"
+              "gt7pro"
             )
           else
             echo "无效的 BATCH 值: $BATCH"
@@ -216,7 +216,7 @@ jobs:
               "oneplus_13s"
               "oneplus_pad_2_pro"
               "oneplus_pad_3"
-              "realme_gt7_pro"
+              "gt7pro"
             )
           else
             echo "无效的 BATCH 值: $BATCH"
