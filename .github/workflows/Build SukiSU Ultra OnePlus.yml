@@ -6,7 +6,7 @@ on:
         type: choice
         description: "配置文件"
         required: true
-        default: oneplus_ace2_pro_v
+        default: realme_gt7_pro
         options:
           - oneplus_nord_ce4_lite_5g_v
           - oneplus_nord_ce4_v
@@ -35,6 +35,7 @@ on:
           - oneplus_13s
           - oneplus_pad_2_pro
           - oneplus_pad_3
+          - realme_gt7_pro
       HOOK:
         type: choice
         description: "钩子选择"
@@ -145,6 +146,7 @@ jobs:
             ["oneplus_13s"]="android15 6.6"
             ["oneplus_pad_2_pro"]="android15 6.6"
             ["oneplus_pad_3"]="android15 6.6"
+            ["realme_gt7_pro"]="android15 6.6"
           )
           FILE="${{ github.event.inputs.FILE }}"
           if [[ "$FILE" =~ ^(.+)_([a-zA-Z])$ ]]; then
@@ -343,7 +345,7 @@ jobs:
           mkdir -p .repo/manifests
           FILE="${{ github.event.inputs.FILE }}"
           cp "$GITHUB_WORKSPACE/.repo/manifests_fallback/${FILE}.xml" ".repo/manifests/${FILE}.xml"
-          repo init -u https://github.com/OnePlusOSS/kernel_manifest.git -b oneplus/${{env.CPU}} -m "${FILE}.xml" --repo-rev=v2.16 --depth=1 --no-clone-bundle --no-tags
+          repo init -u https://github.com/LuminousMind-Hub/kernel_manifest.git -b oneplus/sm8750 -m gt7pro.xml --repo-rev=v2.16 --depth=1 --no-clone-bundle --no-tags
           repo sync -c -j$(nproc) --no-clone-bundle --no-tags --force-sync
           if [ -e kernel_platform/common/BUILD.bazel ]; then
             sed -i '/^[[:space:]]*"protected_exports_list"[[:space:]]*:[[:space:]]*"android\/abi_gki_protected_exports_aarch64",$/d' kernel_platform/common/BUILD.bazel
