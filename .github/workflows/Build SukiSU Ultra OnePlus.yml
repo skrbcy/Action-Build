@@ -6,7 +6,7 @@ on:
         type: choice
         description: "配置文件"
         required: true
-        default: gt7pro
+        default: oneplus_13
         options:
           - oneplus_nord_ce4_lite_5g_v
           - oneplus_nord_ce4_v
@@ -133,7 +133,7 @@ jobs:
           echo "FILE_BASE=$FILE_BASE" >> $GITHUB_ENV
 
           echo "🌐 拉取 OnePlus Manifest 分支列表..."
-          BRANCHES=$(curl -s https://github.com/skrbcy/kernel_manifest/branches | jq -r '.[].name')
+          BRANCHES=$(curl -s https://api.github.com/repos/OnePlusOSS/kernel_manifest/branches | jq -r '.[].name')
 
           FOUND=""
           for BRANCH in $BRANCHES; do
@@ -303,7 +303,7 @@ jobs:
           mkdir -p .repo/manifests
           FILE="${{ github.event.inputs.FILE }}"
           cp "$GITHUB_WORKSPACE/.repo/manifests_fallback/${FILE}.xml" ".repo/manifests/${FILE}.xml"
-          repo init -u https://github.com/skrbcy/kernel_manifest.git -b oneplus/${{env.CPU}} -m "${FILE}.xml" --repo-rev=v2.16 --depth=1 --no-clone-bundle --no-tags
+          repo init -u https://github.com/skrbcy/kernel_manifest.git -b oneplus/sm8750 -m "gt7pro.xml" --repo-rev=v2.16 --depth=1 --no-clone-bundle --no-tags
           repo sync -c -j$(nproc) --no-clone-bundle --no-tags --force-sync
 
           for dir in kernel_platform/common kernel_platform/msm-kernel; do
